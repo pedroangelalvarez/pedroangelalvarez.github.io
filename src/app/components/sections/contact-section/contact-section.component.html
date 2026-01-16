@@ -1,0 +1,94 @@
+<app-section-wrapper sectionId="contact" className="bg-gradient-to-br from-muted to-background">
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+        <h2 id="contact-heading" class="text-4xl font-headline font-bold text-center mb-12 text-primary">
+            Ponte en Contacto
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Información de contacto -->
+            <div class="space-y-6">
+                <h3 class="text-2xl font-semibold text-foreground">Conectemos</h3>
+                <p class="text-muted-foreground">
+                    Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de
+                    tus visiones. ¡No dudes en contactarme!
+                </p>
+
+                <div class="space-y-4">
+                    <!-- Email -->
+                    <a [href]="'mailto:' + email"
+                        class="flex items-center space-x-3 text-foreground hover:text-primary transition-colors">
+                        <span class="icon-mail text-accent">✉️</span>
+                        <span>{{ email }}</span>
+                    </a>
+
+                    <!-- Ubicaciones -->
+                    <div *ngFor="let location of locations; trackBy: trackByIndex"
+                        class="flex items-center space-x-3 text-foreground">
+                        <span class="icon-location text-accent">📍</span>
+                        <span>{{ location }}</span>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-4 pt-2">
+                        <a [href]="linkedInUrl" target="_blank" rel="noopener noreferrer"
+                            aria-label="Perfil de LinkedIn de Pedro Alvarez"
+                            class="social-link text-muted-foreground hover:text-primary transition-colors">
+                            <span class="icon-linkedin">💼</span>
+                        </a>
+                        <a [href]="githubUrl" target="_blank" rel="noopener noreferrer"
+                            aria-label="Perfil de GitHub de Pedro Alvarez"
+                            class="social-link text-muted-foreground hover:text-primary transition-colors">
+                            <span class="icon-github">🐙</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+                class="form-card space-y-6 p-6 bg-card rounded-lg shadow-lg">
+                <!-- Nombre -->
+                <div class="form-field">
+                    <label for="name" class="form-label">Nombre Completo</label>
+                    <input type="text" id="name" formControlName="name" placeholder="Tu Nombre" class="form-input"
+                        [class.error]="nameError" />
+                    <span *ngIf="nameError" class="form-error">{{ nameError }}</span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-field">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" id="email" formControlName="email" placeholder="tu.correo@ejemplo.com"
+                        class="form-input" [class.error]="emailError" />
+                    <span *ngIf="emailError" class="form-error">{{ emailError }}</span>
+                </div>
+
+                <!-- Asunto -->
+                <div class="form-field">
+                    <label for="subject" class="form-label">Asunto</label>
+                    <input type="text" id="subject" formControlName="subject" placeholder="Respecto a..."
+                        class="form-input" [class.error]="subjectError" />
+                    <span *ngIf="subjectError" class="form-error">{{ subjectError }}</span>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="form-field">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea id="message" formControlName="message" placeholder="Tu mensaje aquí..." rows="5"
+                        class="form-input form-textarea" [class.error]="messageError"></textarea>
+                    <span *ngIf="messageError" class="form-error">{{ messageError }}</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button w-full" [disabled]="isSubmitting">
+                    {{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div *ngIf="showToast" class="toast">
+        {{ toastMessage }}
+    </div>
+</app-section-wrapper>

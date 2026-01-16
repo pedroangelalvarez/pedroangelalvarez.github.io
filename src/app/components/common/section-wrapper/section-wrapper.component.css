@@ -1,0 +1,15 @@
+.section-wrapper {
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transform: translateY(2rem);
+}
+
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-hidden {
+    opacity: 0;
+    transform: translateY(2rem);
+}

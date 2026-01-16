@@ -1,0 +1,44 @@
+<app-section-wrapper sectionId="home" className="bg-gradient-to-br from-background to-muted">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Información Personal -->
+        <div class="space-y-6 text-center md:text-left">
+            <h1 id="home-heading"
+                class="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-primary tracking-tight">
+                {{ name }}
+            </h1>
+            <p class="text-2xl md:text-3xl text-foreground">
+                {{ title }}
+            </p>
+            <p class="text-lg text-muted-foreground">
+                {{ description }}
+            </p>
+            <div class="flex gap-4 justify-center md:justify-start">
+                <button (click)="scrollToSection('contact')"
+                    class="btn-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:opacity-90">
+                    Contáctame
+                </button>
+                <button (click)="scrollToSection('experience')"
+                    class="btn-outline px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Ver Experiencia
+                </button>
+            </div>
+        </div>
+
+        <!-- Galería de Fotos -->
+        <div class="grid grid-cols-2 grid-rows-2 gap-2 max-w-md mx-auto md:max-w-full">
+            <ng-container *ngFor="let photo of photos; let i = index; trackBy: trackByIndex">
+                <div [class]="getPhotoClass(i)">
+                    <img [src]="photo.src" [alt]="photo.alt" [attr.data-ai-hint]="photo.dataAiHint"
+                        class="w-full h-full object-cover" [style.loading]="i === 0 ? 'eager' : 'lazy'" />
+                </div>
+            </ng-container>
+
+            <!-- Fallback para pantallas pequeñas con 3 fotos -->
+            <div *ngIf="photos.length === 3"
+                class="md:hidden rounded-lg overflow-hidden shadow-xl transform transition-all duration-500 hover:scale-105 col-span-2">
+                <img [src]="photos[2].src" [alt]="photos[2].alt" [attr.data-ai-hint]="photos[2].dataAiHint"
+                    class="w-full h-full object-cover" />
+            </div>
+        </div>
+    </div>
+</app-section-wrapper>
