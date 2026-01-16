@@ -1,0 +1,565 @@
+/* ===== Global Styles for Profile Sections =====
+/* Copy this content to your Angular project's styles.sass or include it separately
+
+/* ===== CSS Variables =====
+\:root
+  --background: 200 17% 94%
+  --foreground: 240 10% 3.9%
+  --card: 0 0% 100%
+  --card-foreground: 240 10% 3.9%
+  --primary: 207 67% 53%
+  --primary-foreground: 0 0% 100%
+  --secondary: 240 4.8% 95.9%
+  --muted: 240 4.8% 95.9%
+  --muted-foreground: 240 3.8% 46.1%
+  --accent: 26 80% 51%
+  --border: 240 5.9% 90%
+  --radius: 0.5rem
+
+.dark
+  --background: 240 10% 3.9%
+  --foreground: 0 0% 98%
+  --card: 240 10% 3.9%
+  --card-foreground: 0 0% 98%
+  --primary: 207 67% 53%
+  --primary-foreground: 0 0% 100%
+  --muted: 240 3.7% 15.9%
+  --muted-foreground: 240 5% 64.9%
+  --border: 240 3.7% 15.9%
+
+/* ===== Professional CV Typography System =====
+/* Playfair Display - Elegant serif for headlines (aesthetic but serious)
+/* Source Sans 3 - Modern professional sans-serif for body text
+/* Inter - Clean UI font for buttons and interactive elements
+
+/* Typography Variables
+\:root
+  --font-headline: 'Playfair Display', Georgia, 'Times New Roman', serif
+  --font-body: 'Source Sans 3', 'Segoe UI', Roboto, sans-serif
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif
+
+/* Base body typography
+body
+  font-family: var(--font-body)
+  font-weight: 400
+  line-height: 1.6
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+/* Headline classes - For main titles (elegant, serious)
+.font-headline
+  font-family: var(--font-headline)
+  font-weight: 600
+  letter-spacing: -0.01em
+  line-height: 1.2
+
+/* Body text classes - For paragraphs and content
+.font-body
+  font-family: var(--font-body)
+  font-weight: 400
+  line-height: 1.6
+
+/* UI elements - For buttons, labels, navigation
+.font-ui
+  font-family: var(--font-ui)
+  font-weight: 500
+  letter-spacing: -0.01em
+
+/* CV-specific typography styles
+.cv-title
+  font-family: var(--font-headline)
+  font-weight: 700
+  letter-spacing: -0.02em
+  line-height: 1.1
+
+.cv-subtitle
+  font-family: var(--font-headline)
+  font-weight: 500
+  font-style: italic
+  letter-spacing: 0
+
+.cv-section-title
+  font-family: var(--font-headline)
+  font-weight: 600
+  text-transform: uppercase
+  letter-spacing: 0.05em
+  font-size: 0.875rem
+
+.cv-body
+  font-family: var(--font-body)
+  font-weight: 400
+  line-height: 1.7
+
+.cv-body-semibold
+  font-family: var(--font-body)
+  font-weight: 600
+
+.cv-caption
+  font-family: var(--font-body)
+  font-weight: 300
+  font-size: 0.875rem
+  color: hsl(var(--muted-foreground))
+
+
+/* ===== Base Utilities =====
+.bg-background
+  background-color: hsl(var(--background))
+
+.bg-card
+  background-color: hsl(var(--card))
+
+.text-primary
+  color: hsl(var(--primary))
+
+.text-foreground
+  color: hsl(var(--foreground))
+
+.text-muted-foreground
+  color: hsl(var(--muted-foreground))
+
+.border
+  border: 1px solid hsl(var(--border))
+
+/* ===== IBM COBOL Console Styles =====
+.ibm-console
+  background: linear-gradient(180deg, #0a0a14 0%, #0d1117 100%)
+  font-family: 'IBM Plex Mono', 'Courier New', monospace
+  border-radius: 8px
+  overflow: hidden
+  box-shadow: 0 0 0 2px #1a1a2e, 0 0 20px rgba(0, 255, 255, 0.1), inset 0 0 60px rgba(0, 0, 0, 0.5)
+  animation: ibm-flicker 0.15s infinite
+  position: relative
+
+  /* CRT scanline effect
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px)
+    pointer-events: none
+    z-index: 10
+
+.ibm-menu-bar
+  background: linear-gradient(180deg, #2a2a3e 0%, #1a1a2e 100%)
+  border-bottom: 1px solid #3a3a4e
+  padding: 6px 12px
+  display: flex
+  gap: 20px
+  font-size: 14px
+
+.ibm-menu-item
+  color: #e0e0e0
+  cursor: pointer
+  padding: 2px 8px
+  transition: all 0.2s ease
+
+  &::first-letter
+    text-decoration: underline
+
+  &:hover
+    background: #4a4a6e
+    color: #fff
+
+.ibm-header-bar
+  background: #0d1117
+  border-bottom: 1px solid #1a1a2e
+  padding: 8px 16px
+  display: flex
+  justify-content: space-between
+  font-size: 13px
+  color: #00ffff
+
+.ibm-header-left
+  color: #00ffff
+  font-weight: bold
+
+.ibm-header-right
+  color: #00ffff
+
+.ibm-command-area
+  background: #0d1117
+  padding: 4px 16px
+  border-bottom: 1px solid #1a1a2e
+  display: flex
+  align-items: center
+  gap: 12px
+
+.ibm-command-label
+  color: #00ffff
+  font-size: 13px
+
+.ibm-command-input
+  flex: 1
+  background: transparent
+  border: none
+  border-bottom: 1px solid #33ff33
+  color: #33ff33
+  font-family: inherit
+  font-size: 13px
+  padding: 2px 4px
+
+.ibm-scroll-info
+  color: #00ffff
+  font-size: 13px
+
+.ibm-code-area
+  padding: 12px 0
+  background: repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(0, 255, 255, 0.02) 19px, rgba(0, 255, 255, 0.02) 20px)
+
+.ibm-line
+  display: flex
+  align-items: flex-start
+  padding: 1px 16px
+  line-height: 20px
+  font-size: 14px
+  transition: background 0.2s ease
+
+  &:hover
+    background: rgba(0, 255, 255, 0.05)
+
+.ibm-line-number
+  color: #ff3333
+  min-width: 60px
+  font-weight: bold
+  user-select: none
+  text-shadow: 0 0 8px rgba(255, 51, 51, 0.5)
+
+.ibm-code-content
+  flex: 1
+  color: #00ffff
+
+.ibm-keyword
+  color: #33ff33
+  font-weight: bold
+  text-shadow: 0 0 8px rgba(51, 255, 51, 0.4)
+
+.ibm-variable
+  color: #00ffff
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4)
+
+.ibm-string
+  color: #ffcc00
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.4)
+
+.ibm-comment
+  color: #ff6b6b
+  font-style: italic
+
+.ibm-command
+  color: #ff00ff
+  font-weight: bold
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.4)
+
+.ibm-value
+  color: #ffffff
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3)
+
+.ibm-cursor
+  display: inline-block
+  width: 10px
+  height: 18px
+  background: #33ff33
+  animation: ibm-cursor-blink 0.8s step-end infinite
+  vertical-align: middle
+  margin-left: 4px
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.8)
+
+@keyframes ibm-flicker
+  0%, 100%
+    opacity: 1
+  92%
+    opacity: 0.98
+  94%
+    opacity: 1
+  97%
+    opacity: 0.97
+
+@keyframes ibm-cursor-blink
+  0%, 50%
+    opacity: 1
+  51%, 100%
+    opacity: 0
+
+/* ===== JMeter Theme Styles =====
+.jmeter-theme
+  border: 1px solid #d1d5db
+  border-radius: 0.5rem
+  overflow: hidden
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1)
+
+/* ===== Utility Classes =====
+.container
+  width: 100%
+  max-width: 1280px
+
+.mx-auto
+  margin-left: auto
+  margin-right: auto
+
+.px-4
+  padding-left: 1rem
+  padding-right: 1rem
+
+.py-16
+  padding-top: 4rem
+  padding-bottom: 4rem
+
+.mb-10
+  margin-bottom: 2.5rem
+
+.mb-12
+  margin-bottom: 3rem
+
+.mb-16
+  margin-bottom: 4rem
+
+.mt-4
+  margin-top: 1rem
+
+.mt-10
+  margin-top: 2.5rem
+
+.p-1
+  padding: 0.25rem
+
+.p-2
+  padding: 0.5rem
+
+.p-4
+  padding: 1rem
+
+.p-6
+  padding: 1.5rem
+
+.gap-2
+  gap: 0.5rem
+
+.gap-4
+  gap: 1rem
+
+.space-y-2 > * + *
+  margin-top: 0.5rem
+
+.space-y-6 > * + *
+  margin-top: 1.5rem
+
+.flex
+  display: flex
+
+.flex-col
+  flex-direction: column
+
+.flex-1
+  flex: 1
+
+.items-center
+  align-items: center
+
+.justify-center
+  justify-content: center
+
+.justify-between
+  justify-content: space-between
+
+.w-full
+  width: 100%
+
+.h-full
+  height: 100%
+
+.max-w-4xl
+  max-width: 56rem
+
+.max-w-xl
+  max-width: 36rem
+
+.text-center
+  text-align: center
+
+.text-right
+  text-align: right
+
+.text-xs
+  font-size: 0.75rem
+
+.text-sm
+  font-size: 0.875rem
+
+.text-lg
+  font-size: 1.125rem
+
+.text-xl
+  font-size: 1.25rem
+
+.text-4xl
+  font-size: 2.25rem
+
+.font-bold
+  font-weight: 700
+
+.font-semibold
+  font-weight: 600
+
+.font-medium
+  font-weight: 500
+
+.font-mono
+  font-family: ui-monospace, monospace
+
+.rounded
+  border-radius: 0.25rem
+
+.rounded-sm
+  border-radius: 0.125rem
+
+.rounded-lg
+  border-radius: 0.5rem
+
+.rounded-xl
+  border-radius: 0.75rem
+
+.rounded-2xl
+  border-radius: 1rem
+
+.rounded-full
+  border-radius: 9999px
+
+.shadow-sm
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+
+.shadow-2xl
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25)
+
+.overflow-hidden
+  overflow: hidden
+
+.overflow-y-auto
+  overflow-y: auto
+
+.border-b
+  border-bottom: 1px solid hsl(var(--border))
+
+.border-r
+  border-right: 1px solid hsl(var(--border))
+
+.border-t
+  border-top: 1px solid hsl(var(--border))
+
+.bg-white
+  background-color: #fff
+
+.bg-gray-50
+  background-color: #f9fafb
+
+.bg-gray-100
+  background-color: #f3f4f6
+
+.bg-gray-200
+  background-color: #e5e7eb
+
+.bg-gray-700
+  background-color: #374151
+
+.bg-gray-800
+  background-color: #1f2937
+
+.bg-gray-900
+  background-color: #111827
+
+.bg-neutral-900
+  background-color: #171717
+
+.bg-green-400
+  background-color: #4ade80
+
+.bg-green-500
+  background-color: #22c55e
+
+.text-gray-400
+  color: #9ca3af
+
+.text-gray-500
+  color: #6b7280
+
+.text-green-400
+  color: #4ade80
+
+.text-green-600
+  color: #16a34a
+
+.italic
+  font-style: italic
+
+.select-none
+  user-select: none
+
+.cursor-pointer
+  cursor: pointer
+
+.truncate
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.animate-pulse
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite
+
+@keyframes pulse
+  0%, 100%
+    opacity: 1
+  50%
+    opacity: 0.5
+
+.transition-transform
+  transition: transform 0.15s ease
+
+.hover\:scale-110:hover
+  transform: scale(1.1)
+
+.hover\:bg-gray-100:hover
+  background-color: #f3f4f6
+
+.grid
+  display: grid
+
+.grid-cols-\[100px_1fr\]
+  grid-template-columns: 100px 1fr
+
+.grid-cols-\[1fr_2fr\]
+  grid-template-columns: 1fr 2fr
+
+.divide-x > * + *
+  border-left: 1px solid hsl(var(--border))
+
+.sticky
+  position: sticky
+
+.top-0
+  top: 0
+
+.z-10
+  z-index: 10
+
+.z-50
+  z-index: 50
+
+.fixed
+  position: fixed
+
+.inset-0
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+@media (min-width: 768px)
+  .md\:py-24
+    padding-top: 6rem
+    padding-bottom: 6rem
+
+  .md\:px-6
+    padding-left: 1.5rem
+    padding-right: 1.5rem

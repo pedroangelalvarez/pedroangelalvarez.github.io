@@ -1,0 +1,79 @@
+<app-section-wrapper sectionId="skills" className="bg-gray-100 dark:bg-gray-900">
+    <h2 class="text-4xl font-headline font-bold text-center mb-10 text-primary">
+        Habilidades Técnicas
+    </h2>
+
+    <div class="max-w-[1000px] mx-auto p-1">
+        <!-- JMeter-like Main Window -->
+        <div class="jmeter-theme flex flex-col h-[600px] w-full bg-gray-100 dark:bg-gray-800">
+
+            <!-- Top Menu Bar -->
+            <div class="bg-gray-200 dark:bg-gray-700 border-b flex items-center px-2 py-1 text-xs gap-4 select-none">
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">File</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Edit</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Search</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Run</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Options</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Tools</span>
+                <span class="cursor-pointer hover:bg-black/10 px-1 rounded">Help</span>
+            </div>
+
+            <!-- Icon Toolbar -->
+            <div class="bg-gray-100 dark:bg-gray-700 border-b p-1.5 flex gap-3 items-center shadow-sm z-10">
+                <div class="flex gap-1 border-r pr-3 border-gray-300 dark:border-gray-600">
+                    <span class="w-5 h-5 p-0.5">📄</span>
+                    <span class="w-5 h-5 p-0.5">📂</span>
+                    <span class="w-5 h-5 p-0.5">🧪</span>
+                    <span class="w-5 h-5 p-0.5">💾</span>
+                </div>
+
+                <div class="flex gap-1 border-r pr-3 border-gray-300 dark:border-gray-600">
+                    <span class="w-5 h-5 p-0.5">✂️</span>
+                    <span class="w-5 h-5 p-0.5">📋</span>
+                    <span class="w-5 h-5 p-0.5">📥</span>
+                    <span class="w-5 h-5 p-0.5">🗑️</span>
+                </div>
+
+                <div class="flex gap-1 border-r pr-3 border-gray-300 text-green-600">
+                    <span class="w-5 h-5 p-0.5 cursor-pointer hover:scale-110 transition-transform">▶️</span>
+                    <span class="w-5 h-5 p-0.5 text-gray-400">⏹️</span>
+                </div>
+
+                <span class="text-xs text-gray-400 ml-auto mr-2 font-mono">00:00:00</span>
+                <div class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_5px_rgba(0,255,0,0.6)] animate-pulse"></div>
+            </div>
+
+            <!-- Content Area (Split Pane) -->
+            <div class="flex flex-1 overflow-hidden">
+
+                <!-- Sidebar (Tree with JMeter style) -->
+                <div class="w-[280px] bg-white dark:bg-gray-900 border-r overflow-y-auto flex flex-col">
+                    <div
+                        class="p-2 border-b bg-gray-50 dark:bg-gray-800 flex justify-between items-center sticky top-0 z-10">
+                        <span class="text-xs font-bold text-gray-500">Test Plan</span>
+                        <div class="flex gap-1">
+                            <span class="w-3 h-3 text-gray-400">🔍</span>
+                            <span class="w-3 h-3 text-gray-400">🖱️</span>
+                        </div>
+                    </div>
+                    <div class="p-1 pb-10">
+                        <app-skills-tree [node]="treeData" [selectedId]="selectedId"
+                            (nodeSelected)="onSelectNode($event)">
+                        </app-skills-tree>
+                    </div>
+                </div>
+
+                <!-- Main Details Panel -->
+                <div class="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <app-skill-details [skill]="selectedSkill"></app-skill-details>
+                </div>
+
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-gray-500 mt-4 font-mono">
+            * Apache JMeter style interface for skill visualization
+        </p>
+
+    </div>
+</app-section-wrapper>

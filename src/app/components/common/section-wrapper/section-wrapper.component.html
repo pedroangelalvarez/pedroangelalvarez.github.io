@@ -1,0 +1,9 @@
+<section 
+  #sectionElement
+  [id]="sectionId"
+  [class]="getSectionClasses()"
+  [attr.aria-labelledby]="sectionId + '-heading'">
+  <div [class]="getContainerClasses()">
+    <ng-content></ng-content>
+  </div>
+</section>

@@ -1,0 +1,210 @@
+/* ===== Education Section - Enhanced COBOL Display Environment ===== */
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+/* Enhanced IBM Console for Education Section */
+:host .ibm-console {
+    background: linear-gradient(180deg, #050510 0%, #0a0a18 50%, #050510 100%);
+    border: 3px solid #1a1a2e;
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 1px #0a0a14,
+        0 0 30px rgba(0, 255, 0, 0.08),
+        0 0 60px rgba(0, 255, 255, 0.05),
+        inset 0 0 100px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* CRT Screen curvature effect */
+:host .ibm-console::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 0%,
+            transparent 70%,
+            rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Enhanced scanlines */
+:host .ibm-console::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 1px,
+            rgba(0, 0, 0, 0.2) 1px,
+            rgba(0, 0, 0, 0.2) 2px);
+    pointer-events: none;
+    z-index: 10;
+    animation: scanline-flicker 0.05s infinite;
+}
+
+@keyframes scanline-flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.97;
+    }
+}
+
+/* Phosphor glow effect on text */
+:host .ibm-code-area {
+    text-shadow: 0 0 5px currentColor;
+}
+
+/* Enhanced header bar */
+:host .ibm-header-bar {
+    background: linear-gradient(180deg, #0d0d1a 0%, #0a0a14 100%);
+    border-bottom: 1px solid #00ffff33;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
+
+/* Enhanced menu bar */
+:host .ibm-menu-bar {
+    background: linear-gradient(180deg, #1a1a2e 0%, #12121f 100%);
+    border-bottom: 1px solid #2a2a4e;
+}
+
+:host .ibm-menu-item:hover {
+    background: linear-gradient(180deg, #3a3a5e 0%, #2a2a4e 100%);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced code content phosphor effect */
+:host .ibm-keyword {
+    text-shadow:
+        0 0 5px rgba(51, 255, 51, 0.8),
+        0 0 10px rgba(51, 255, 51, 0.4),
+        0 0 20px rgba(51, 255, 51, 0.2);
+}
+
+:host .ibm-variable {
+    text-shadow:
+        0 0 5px rgba(0, 255, 255, 0.8),
+        0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+:host .ibm-string {
+    text-shadow:
+        0 0 5px rgba(255, 204, 0, 0.8),
+        0 0 10px rgba(255, 204, 0, 0.4);
+}
+
+:host .ibm-command {
+    text-shadow:
+        0 0 5px rgba(255, 0, 255, 0.8),
+        0 0 10px rgba(255, 0, 255, 0.4);
+}
+
+:host .ibm-value {
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+:host .ibm-comment {
+    text-shadow:
+        0 0 3px rgba(255, 107, 107, 0.6);
+}
+
+:host .ibm-line-number {
+    text-shadow:
+        0 0 8px rgba(255, 51, 51, 0.8),
+        0 0 15px rgba(255, 51, 51, 0.4);
+}
+
+/* Enhanced cursor with realistic blink */
+:host .ibm-cursor {
+    background: #33ff33;
+    box-shadow:
+        0 0 5px #33ff33,
+        0 0 10px #33ff33,
+        0 0 20px rgba(51, 255, 51, 0.5);
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    50% {
+        opacity: 1;
+        background: #33ff33;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+        background: transparent;
+    }
+}
+
+/* Line hover effect */
+:host .ibm-line:hover {
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.03);
+}
+
+/* Screen flicker animation */
+:host .ibm-console {
+    animation: screen-flicker 8s infinite;
+}
+
+@keyframes screen-flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    92% {
+        opacity: 0.99;
+    }
+
+    93% {
+        opacity: 1;
+    }
+
+    94% {
+        opacity: 0.98;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    96% {
+        opacity: 0.99;
+    }
+
+    97% {
+        opacity: 1;
+    }
+}
+
+/* Title styling */
+:host h2 {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    text-shadow:
+        0 0 10px rgba(74, 222, 128, 0.8),
+        0 0 20px rgba(74, 222, 128, 0.5),
+        0 0 40px rgba(74, 222, 128, 0.3);
+    letter-spacing: 0.1em;
+}

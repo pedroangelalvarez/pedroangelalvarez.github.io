@@ -1,0 +1,37 @@
+<div class="select-none">
+    <div class="tree-node-row" [class.selected]="isSelected" [style.paddingLeft]="paddingLeft"
+        (click)="onNodeClick($event)">
+
+        <!-- Toggle Arrow -->
+        <span class="toggle-arrow" (click)="onToggle($event)">
+            <ng-container *ngIf="hasChildren">
+                <span class="arrow-icon">{{ isOpen ? '▼' : '▶' }}</span>
+            </ng-container>
+        </span>
+
+        <!-- Icon -->
+        <span class="node-icon" [class.selected]="isSelected">
+            <ng-container [ngSwitch]="node.icon">
+                <span *ngSwitchCase="'globe'">🌐</span>
+                <span *ngSwitchCase="'server'">🖥️</span>
+                <span *ngSwitchCase="'smartphone'">📱</span>
+                <span *ngSwitchCase="'bar-chart'">📊</span>
+                <span *ngSwitchCase="'git-merge'">🔀</span>
+                <span *ngSwitchCase="'code'">💻</span>
+                <span *ngSwitchDefault>🧪</span>
+            </ng-container>
+        </span>
+
+        <!-- Node Name -->
+        <span class="node-name" [class.font-bold]="isSelected">
+            {{ node.name }}
+        </span>
+    </div>
+
+    <!-- Children -->
+    <div *ngIf="isOpen && hasChildren">
+        <app-skills-tree *ngFor="let child of node.children; trackBy: trackById" [node]="child"
+            [selectedId]="selectedId" [level]="level + 1" (nodeSelected)="onChildSelected($event)">
+        </app-skills-tree>
+    </div>
+</div>

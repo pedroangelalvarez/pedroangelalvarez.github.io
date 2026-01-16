@@ -1,0 +1,139 @@
+<app-section-wrapper sectionId="education" className="bg-neutral-900">
+    <div class="w-full max-w-4xl mx-auto">
+        <h2 id="education-heading" class="text-4xl font-headline font-bold text-center mb-12 text-green-400">
+            Formación Académica
+        </h2>
+
+        <div class="ibm-console">
+            <!-- Menu Bar -->
+            <div class="ibm-menu-bar">
+                <span class="ibm-menu-item">File</span>
+                <span class="ibm-menu-item">Edit</span>
+                <span class="ibm-menu-item">Edit_Settings</span>
+                <span class="ibm-menu-item">Menu</span>
+                <span class="ibm-menu-item">Utilities</span>
+                <span class="ibm-menu-item">Compilers</span>
+                <span class="ibm-menu-item">Test</span>
+                <span class="ibm-menu-item">Help</span>
+            </div>
+
+            <!-- Header Bar -->
+            <div class="ibm-header-bar">
+                <span
+                    class="ibm-header-left">EDIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PALVAREZ.EDUCATION.COBOL(FORMACION)
+                    - 01.04</span>
+                <span class="ibm-header-right">Columns 00001 00072</span>
+            </div>
+
+            <!-- Command Area -->
+            <div class="ibm-command-area">
+                <span class="ibm-command-label">Command ===&gt;</span>
+                <div class="ibm-command-input"></div>
+                <span class="ibm-scroll-info">Scroll ===&gt; CSR</span>
+            </div>
+
+            <!-- Code Area -->
+            <div class="ibm-code-area">
+                <!-- Comment Header -->
+                <div class="ibm-line">
+                    <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                    <span class="ibm-code-content">
+                        <span class="ibm-comment">*&#64;EDU-SYSTEM-2024 INI</span>
+                    </span>
+                </div>
+                <div class="ibm-line">
+                    <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                    <span class="ibm-code-content">
+                        <span class="ibm-comment">* FORMACION ACADEMICA - PEDRO ALVAREZ</span>
+                    </span>
+                </div>
+                <div class="ibm-line">
+                    <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                    <span class="ibm-code-content">
+                        <span class="ibm-comment">*</span>
+                    </span>
+                </div>
+
+                <!-- Education Records -->
+                <ng-container *ngFor="let edu of educationData; let i = index; trackBy: trackByIndex">
+                    <!-- Record Header -->
+                    <div class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content">
+                            <span class="ibm-comment">*&#64;REGISTRO-{{ (i + 1).toString().padStart(2, '0') }}
+                                INI</span>
+                        </span>
+                    </div>
+
+                    <!-- DISPLAY TITULO -->
+                    <div class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content">
+                            <span
+                                class="ibm-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISPLAY</span>
+                            <span class="ibm-string">&apos; TITULO &apos;</span>
+                            <span class="ibm-keyword"> {{ edu.degree.toUpperCase() }}</span>
+                        </span>
+                    </div>
+
+                    <!-- DISPLAY INSTITUCION -->
+                    <div class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content">
+                            <span
+                                class="ibm-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DISPLAY</span>
+                            <span class="ibm-string">&apos; INSTITUCION &apos;</span>
+                            <span class="ibm-variable"> {{ edu.institution.toUpperCase() }}</span>
+                        </span>
+                    </div>
+
+
+                    <!-- MOVE operations for details -->
+                    <div *ngFor="let detail of edu.details; let j = index" class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content">
+                            <span
+                                class="ibm-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOVE</span>
+                            <span class="ibm-string">&apos;{{ detail.toUpperCase() }}&apos;</span>
+                            <span class="ibm-keyword">&nbsp;TO </span>
+                            <span class="ibm-variable">WS-ESPECIALIDAD-{{ (j + 1).toString().padStart(2, '0') }}</span>
+                        </span>
+                    </div>
+
+                    <!-- Record Footer -->
+                    <div class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content">
+                            <span class="ibm-comment">*&#64;REGISTRO-{{ (i + 1).toString().padStart(2, '0') }}
+                                FIN</span>
+                        </span>
+                    </div>
+
+                    <!-- Empty line between records -->
+                    <div *ngIf="isNotLastItem(i)" class="ibm-line">
+                        <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                        <span class="ibm-code-content"></span>
+                    </div>
+                </ng-container>
+
+                <!-- Footer -->
+                <div class="ibm-line">
+                    <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                    <span class="ibm-code-content">
+                        <span class="ibm-comment">*&#64;EDU-SYSTEM-2024 FIN</span>
+                    </span>
+                </div>
+
+                <!-- STOP RUN -->
+                <div class="ibm-line">
+                    <span class="ibm-line-number">{{ getLineNumber() }}</span>
+                    <span class="ibm-code-content">
+                        <span class="ibm-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STOP
+                            RUN</span>
+                        <span class="ibm-cursor"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-section-wrapper>

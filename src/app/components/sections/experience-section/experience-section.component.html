@@ -1,0 +1,37 @@
+<app-section-wrapper sectionId="experience" className="bg-muted">
+    <h2 id="experience-heading" class="text-4xl font-headline font-bold text-center mb-12 text-primary">
+        Mi Trayectoria Profesional
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let exp of experiences; trackBy: trackById"
+            class="experience-card overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+
+            <!-- Imagen -->
+            <div class="relative w-full h-48">
+                <img [src]="exp.image" [alt]="exp.title" [attr.data-ai-hint]="exp.dataAiHint"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy" />
+            </div>
+
+            <!-- Header -->
+            <div class="card-header p-4">
+                <h3 class="text-xl font-semibold text-primary">{{ exp.title }}</h3>
+                <p class="text-sm text-foreground">
+                    {{ exp.company }}
+                    <span class="text-muted-foreground">| {{ exp.dates }}</span>
+                </p>
+            </div>
+
+            <!-- Content -->
+            <div class="card-content p-4 pt-0 flex-grow">
+                <p class="text-muted-foreground mb-4">{{ exp.description }}</p>
+                <div class="flex flex-wrap gap-2">
+                    <span *ngFor="let tag of exp.tags; trackBy: trackByIndex" class="badge">
+                        {{ tag }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-section-wrapper>
